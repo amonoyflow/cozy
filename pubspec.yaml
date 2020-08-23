@@ -1,0 +1,15 @@
+name: cozy
+description: A property rental mobile application.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  get_it: ^4.0.4
+
+flutter:
+  uses-material-design: true
