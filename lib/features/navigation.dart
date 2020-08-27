@@ -1,3 +1,4 @@
+import 'package:cozy/features/home/presentation/screens/home.dart';
 import 'package:flutter/material.dart';
 
 class Navigation extends StatefulWidget {
@@ -13,9 +14,7 @@ class _NavigationState extends State<Navigation> with TickerProviderStateMixin {
     return Scaffold(
       body: IndexedStack(
         index: currentIndex,
-        children: [
-          for (final item in NavigationItem.items) item.screen
-        ],
+        children: [for (final item in NavigationItem.items) item.screen],
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
@@ -37,15 +36,11 @@ class NavigationItem {
   Icon icon;
   String label;
 
-  NavigationItem({
-    this.screen,
-    this.label,
-    this.icon
-  });
+  NavigationItem({this.screen, this.label, this.icon});
 
   static List<NavigationItem> items = [
     NavigationItem(
-      screen: Center(child: Text("Home")),
+      screen: Home(),
       icon: Icon(Icons.home),
       label: "Home",
     ),
