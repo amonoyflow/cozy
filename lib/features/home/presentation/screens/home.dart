@@ -3,16 +3,14 @@ import 'package:cozy/features/home/presentation/bloc/home_bloc.dart';
 import 'package:cozy/features/home/presentation/widgets/property_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
+import 'package:cozy/core/extensions/number_parsing.dart';
 
 class Home extends StatelessWidget {
-  final formatter = NumberFormat("#,###");
-
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Color(0xFFF6F6F6),
-      padding: const EdgeInsets.all(24.0),
+      padding: const EdgeInsets.all(15.0),
       child: Column(
         children: [
           Expanded(
@@ -51,16 +49,18 @@ class Home extends StatelessWidget {
                                       bottomRight: Radius.circular(15.0)),
                                 ),
                                 Positioned(
-                                  bottom: 10.0,
-                                  left: 10.0,
+                                  bottom: 5.0,
+                                  left: 5.0,
                                   child: Container(
-                                    padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 10.0, horizontal: 15.0),
                                     decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      color: Colors.black38
-                                    ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                        color: Colors.black38),
                                     child: Text(
-                                      formatter.format(state.properties[index].price),
+                                      state.properties[index].price
+                                          .toCurrency(),
                                       style: TextStyle(
                                         fontSize: 20.0,
                                         fontWeight: FontWeight.w900,

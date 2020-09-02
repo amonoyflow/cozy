@@ -3,6 +3,7 @@ import 'package:cozy/features/home/data/repositories/properties_repository_impl.
 import 'package:cozy/features/home/domain/repositories/properties_repository.dart';
 import 'package:cozy/features/home/domain/usecase/get_properties.dart';
 import 'package:cozy/features/home/presentation/bloc/home_bloc.dart';
+import 'package:cozy/features/search/presentaion/bloc/search_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 final locator = GetIt.instance;
@@ -19,6 +20,10 @@ void setupBloc() {
     () => HomeBloc(
       properties: locator(),
     ),
+  );
+
+  locator.registerFactory(
+    () => SearchBloc(),
   );
 }
 
