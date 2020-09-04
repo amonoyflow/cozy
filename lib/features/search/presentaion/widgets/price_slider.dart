@@ -1,5 +1,5 @@
 import 'package:cozy/features/search/presentaion/bloc/search_bloc.dart';
-import 'package:cozy/features/search/presentaion/widgets/range_slider_thumb.dart';
+import 'package:cozy/features/search/presentaion/widgets/price_range_slider_thumb.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:cozy/core/extensions/number_parsing.dart';
@@ -28,7 +28,7 @@ class _PriceSliderState extends State<PriceSlider> {
     return SliderTheme(
       data: SliderThemeData(
           trackHeight: 2.0,
-          rangeThumbShape: RangeSliderThumb(),
+          rangeThumbShape: PriceRangeSliderThumb(),
           activeTrackColor: Color(0xFF8080C0),
           inactiveTrackColor: Colors.grey[400],
           valueIndicatorColor: Color(0xFF8080C0),

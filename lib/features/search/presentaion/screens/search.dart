@@ -1,6 +1,7 @@
 import 'package:cozy/core/locator.dart';
 import 'package:cozy/features/search/presentaion/bloc/search_bloc.dart';
 import 'package:cozy/features/search/presentaion/widgets/beds.dart';
+import 'package:cozy/features/search/presentaion/widgets/city_search.dart';
 import 'package:cozy/features/search/presentaion/widgets/price.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,14 +15,20 @@ class Search extends StatelessWidget {
       child: Column(
         children: [
           BlocProvider(
+            create: (_) =>
+                locator<SearchBloc>()..add(CitySearchChangedEvent(city: "")),
+            child: CitySearch(),
+          ),
+          SizedBox(height: 35.0),
+          BlocProvider(
             create: (_) => locator<SearchBloc>()
               ..add(PriceRangeChangedEvent(priceRange: RangeValues(0, 100000))),
             child: Price(),
           ),
           SizedBox(height: 35.0),
           BlocProvider(
-            create: (_) => locator<SearchBloc>()
-              ..add(PriceRangeChangedEvent(priceRange: RangeValues(0, 100000))),
+            create: (_) =>
+                locator<SearchBloc>()..add(BedroomsChangedEvent(bedrooms: 0)),
             child: Beds(),
           ),
         ],

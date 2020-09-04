@@ -1,0 +1,70 @@
+{
+    "Cities":[
+        {
+            "keyword": "Pasay",
+            "id": 1,
+            "autocompleteTerm": "Pasay City",
+            "country": "Philippines"
+        },
+        {
+            "keyword": "Makati",
+            "id": 1,
+            "autocompleteTerm": "Makati City",
+            "country": "Philippines"
+        },
+        {
+            "keyword": "Manila",
+            "id": 1,
+            "autocompleteTerm": "Manila City",
+            "country": "Philippines"
+        },
+        {
+            "keyword": "Mandaluyong",
+            "id": 1,
+            "autocompleteTerm": "Mandaluyong City",
+            "country": "Philippines"
+        },
+        {
+            "keyword": "Taguig",
+            "id": 1,
+            "autocompleteTerm": "Taguig City",
+            "country": "Philippines"
+        },
+        {
+            "keyword": "Quezon",
+            "id": 1,
+            "autocompleteTerm": "Quezon City",
+            "country": "Philippines"
+        },
+        {
+            "keyword": "Cebu",
+            "id": 1,
+            "autocompleteTerm": "Cebu City",
+            "country": "Philippines"
+        },
+        {
+            "keyword": "Davao",
+            "id": 1,
+            "autocompleteTerm": "Davao City",
+            "country": "Philippines"
+        },
+        {
+            "keyword": "Baguio",
+            "id": 1,
+            "autocompleteTerm": "Baguio City",
+            "country": "Philippines"
+        },
+        {
+            "keyword": "Iloilo",
+            "id": 1,
+            "autocompleteTerm": "Iloilo City",
+            "country": "Philippines"
+        },
+        {
+            "keyword": "Parañaque",
+            "id": 1,
+            "autocompleteTerm": "Parañaque City",
+            "country": "Philippines"
+        }
+    ]
+}

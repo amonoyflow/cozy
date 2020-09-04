@@ -17,3 +17,25 @@ class PriceRangeChangedEvent extends SearchEvent {
   @override
   List<Object> get props => [priceRange];
 }
+
+class BedroomsChangedEvent extends SearchEvent {
+  final int bedrooms;
+
+  BedroomsChangedEvent({
+    this.bedrooms,
+  });
+
+  @override
+  List<Object> get props => [bedrooms];
+}
+
+class CitySearchChangedEvent extends SearchEvent {
+  final String city;
+
+  CitySearchChangedEvent({
+    this.city,
+  });
+
+  @override
+  List<Object> get props => [city];
+}

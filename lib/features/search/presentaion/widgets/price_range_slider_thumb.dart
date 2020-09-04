@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class RangeSliderThumb extends RangeSliderThumbShape {
+class PriceRangeSliderThumb extends RangeSliderThumbShape {
   final double thumbRadius;
 
-  const RangeSliderThumb({
+  const PriceRangeSliderThumb({
     this.thumbRadius = 12.0,
   });
 

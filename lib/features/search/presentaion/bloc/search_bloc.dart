@@ -17,5 +17,11 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     if (event is PriceRangeChangedEvent) {
       yield PriceRangeLoaded(priceRange: event.priceRange);
     }
+    if (event is BedroomsChangedEvent) {
+      yield BedroomsLoaded(bedrooms: event.bedrooms);
+    }
+    if (event is CitySearchChangedEvent) {
+      yield CitySearchLoaded(city: event.city);
+    }
   }
 }

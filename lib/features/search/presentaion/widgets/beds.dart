@@ -8,21 +8,32 @@ class Beds extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SearchBloc, SearchState>(
       builder: (context, state) {
-        if (state is PriceRangeLoaded) {
+        if (state is BedroomsLoaded) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 13.0),
-                child: Text(
-                  "Bedrooms",
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w700,
-                  ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Bedrooms",
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    Text(
+                      "${state.bedrooms}",
+                      style: TextStyle(
+                        fontSize: 14.0,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              SizedBox(height: 10.0),
+              SizedBox(height: 15.0),
               BedSelection(),
             ],
           );

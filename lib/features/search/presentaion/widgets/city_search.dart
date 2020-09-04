@@ -1,14 +1,13 @@
 import 'package:cozy/features/search/presentaion/bloc/search_bloc.dart';
-import 'package:cozy/features/search/presentaion/widgets/price_slider.dart';
+import 'package:cozy/features/search/presentaion/widgets/city_autocomplete_search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:cozy/core/extensions/number_parsing.dart';
 
-class Price extends StatelessWidget {
+class CitySearch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SearchBloc, SearchState>(builder: (context, state) {
-      if (state is PriceRangeLoaded) {
+      if (state is CitySearchLoaded) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -18,14 +17,14 @@ class Price extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Price",
+                    "Location",
                     style: TextStyle(
                       fontSize: 16.0,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
                   Text(
-                    "₱${state.priceRange.start.toCurrency()} - ₱${state.priceRange.end.toCurrency()}",
+                    "${state.city}",
                     style: TextStyle(
                       fontSize: 14.0,
                     ),
@@ -33,11 +32,8 @@ class Price extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 5.0),
-            PriceSlider(
-              minPrice: 0,
-              maxPrice: 100000,
-            ),
+            SizedBox(height: 15.0),
+            CityAutoCompleteSearch(),
           ],
         );
       }
