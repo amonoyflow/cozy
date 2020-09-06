@@ -27,14 +27,15 @@ class _PriceSliderState extends State<PriceSlider> {
   Widget build(BuildContext context) {
     return SliderTheme(
       data: SliderThemeData(
-          trackHeight: 2.0,
-          rangeThumbShape: PriceRangeSliderThumb(),
-          activeTrackColor: Color(0xFF8080C0),
-          inactiveTrackColor: Colors.grey[400],
-          valueIndicatorColor: Color(0xFF8080C0),
-          rangeValueIndicatorShape: PaddleRangeSliderValueIndicatorShape(),
-          showValueIndicator: ShowValueIndicator.always,
-          minThumbSeparation: 0),
+        trackHeight: 2.0,
+        rangeThumbShape: PriceRangeSliderThumb(),
+        activeTrackColor: Color(0xFF8080C0),
+        inactiveTrackColor: Colors.grey[400],
+        valueIndicatorColor: Color(0xFF8080C0),
+        rangeValueIndicatorShape: PaddleRangeSliderValueIndicatorShape(),
+        showValueIndicator: ShowValueIndicator.always,
+        minThumbSeparation: 0,
+      ),
       child: RangeSlider(
         values: priceValues,
         min: widget.minPrice,

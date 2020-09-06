@@ -25,7 +25,7 @@ class Beds extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      state.bedrooms == "0" ? "Any" : "${state.bedrooms}",
+                      state.bedrooms == 0 ? "Any" : "${state.bedrooms}",
                       style: TextStyle(
                         fontSize: 14.0,
                       ),
@@ -34,7 +34,15 @@ class Beds extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 15.0),
-              BedSelection(),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                child: BedSelection(
+                  titles: ["Any", "1", "2", "3", "4"],
+                  color: Colors.white,
+                  secondaryColor: Color(0xFF8080C0),
+                  current: state.bedrooms,
+                ),
+              ),
             ],
           );
         }

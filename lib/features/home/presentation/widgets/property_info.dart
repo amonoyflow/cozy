@@ -18,11 +18,17 @@ class PropertyInfo extends StatelessWidget {
       children: [
         Row(
           children: [
-            Image.asset(this.image, height: 22.0),
+            Image.asset(
+              this.image,
+              height: 22.0,
+            ),
             SizedBox(width: 5.0),
             Text(
               this.value,
-              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w600),
+              style: TextStyle(
+                fontSize: 16.0,
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ],
         ),

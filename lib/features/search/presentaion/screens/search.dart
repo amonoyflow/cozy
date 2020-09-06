@@ -39,8 +39,8 @@ class Search extends StatelessWidget {
           ),
           SizedBox(height: 25.0),
           BlocProvider(
-            create: (_) => locator<SearchBloc>()
-              ..add(BedroomsChangedEvent(bedrooms: "Any")),
+            create: (_) =>
+                locator<SearchBloc>()..add(BedroomsChangedEvent(bedrooms: 0)),
             child: Beds(),
           ),
           Expanded(child: Container()),

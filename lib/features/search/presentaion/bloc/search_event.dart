@@ -19,7 +19,7 @@ class PriceRangeChangedEvent extends SearchEvent {
 }
 
 class BedroomsChangedEvent extends SearchEvent {
-  final String bedrooms;
+  final int bedrooms;
 
   BedroomsChangedEvent({
     this.bedrooms,

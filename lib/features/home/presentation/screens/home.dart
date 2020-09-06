@@ -38,7 +38,7 @@ class Home extends StatelessWidget {
                               blurRadius: 3,
                               offset: Offset(0, 2),
                             ),
-                          ]
+                          ],
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,

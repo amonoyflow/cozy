@@ -3,57 +3,94 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BedSelection extends StatefulWidget {
+  final int current;
+  final List<String> titles;
+  final Color color;
+  final Color secondaryColor;
+
+  const BedSelection({
+    this.titles,
+    this.current,
+    this.color,
+    this.secondaryColor,
+  });
+
   @override
   _BedSelectionState createState() => _BedSelectionState();
 }
 
 class _BedSelectionState extends State<BedSelection> {
-  List<bool> isSelected;
-
-  @override
-  void initState() {
-    isSelected = [true, false, false, false, false];
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: LayoutBuilder(
-        builder: (context, constraints) {
-          return ToggleButtons(
-            borderColor: Color(0xFF8080C0),
-            fillColor: Color(0xFF8080C0),
-            borderWidth: 2.0,
-            textStyle: TextStyle(
-              fontWeight: FontWeight.w700,
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: _buttonList(),
+      ),
+    );
+  }
+
+  List<Widget> _buttonList() {
+    final buttons = <Widget>[];
+    for (int i = 0; i < widget.titles.length; i++) {
+      buttons.add(_button(widget.titles[i], i));
+    }
+    return buttons;
+  }
+
+  Widget _button(String title, int index) {
+    if (index == widget.current)
+      return _activeButton(title);
+    else
+      return _inActiveButton(title, index);
+  }
+
+  Widget _activeButton(String title) {
+    return InkWell(
+      onTap: () {},
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 5.0),
+        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
+        decoration: BoxDecoration(
+            color: widget.secondaryColor,
+            border: Border.all(width: 2.0, color: widget.secondaryColor),
+            borderRadius: BorderRadius.all(Radius.circular(10.0))),
+        child: Text(
+          title,
+          style: TextStyle(
+            color: widget.color,
+            fontWeight: FontWeight.w900,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _inActiveButton(String title, int index) {
+    return InkWell(
+      onTap: () {
+        BlocProvider.of<SearchBloc>(context)
+          ..add(BedroomsChangedEvent(bedrooms: index));
+      },
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 5.0),
+        padding: const EdgeInsets.symmetric(
+          horizontal: 20.0,
+          vertical: 15.0,
+        ),
+        decoration: BoxDecoration(
+            color: widget.color,
+            border: Border.all(
+              width: 2.0,
+              color: widget.secondaryColor,
             ),
-            selectedBorderColor: Color(0xFF8080C0),
-            selectedColor: Colors.white,
-            borderRadius: BorderRadius.circular(10.0),
-            constraints: BoxConstraints.expand(
-                width: (constraints.maxWidth / 5) - 8, height: 45),
-            children: [
-              Text("Any"),
-              Text("1"),
-              Text("2"),
-              Text("3"),
-              Text("4"),
-            ],
-            onPressed: (index) {
-              setState(
-                () {
-                  for (int i = 0; i < isSelected.length; i++) {
-                    isSelected[i] = i == index;
-                    BlocProvider.of<SearchBloc>(context)
-                      ..add(BedroomsChangedEvent(bedrooms: index.toString()));
-                  }
-                },
-              );
-            },
-            isSelected: isSelected,
-          );
-        },
+            borderRadius: BorderRadius.all(Radius.circular(10.0))),
+        child: Text(
+          title,
+          style: TextStyle(
+            fontWeight: FontWeight.w900,
+          ),
+        ),
       ),
     );
   }
