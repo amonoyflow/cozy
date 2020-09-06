@@ -31,29 +31,14 @@ class _BedSelectionState extends State<BedSelection> {
             selectedBorderColor: Color(0xFF8080C0),
             selectedColor: Colors.white,
             borderRadius: BorderRadius.circular(10.0),
-            constraints:
-                BoxConstraints.expand(width: (constraints.maxWidth / 5) - 8),
+            constraints: BoxConstraints.expand(
+                width: (constraints.maxWidth / 5) - 8, height: 45),
             children: [
-              Container(
-                padding: const EdgeInsets.symmetric(vertical: 13.0),
-                child: Text("Any"),
-              ),
-              Container(
-                padding: const EdgeInsets.symmetric(vertical: 13.0),
-                child: Text("1"),
-              ),
-              Container(
-                padding: const EdgeInsets.symmetric(vertical: 13.0),
-                child: Text("2"),
-              ),
-              Container(
-                padding: const EdgeInsets.symmetric(vertical: 13.0),
-                child: Text("3"),
-              ),
-              Container(
-                padding: const EdgeInsets.symmetric(vertical: 13.0),
-                child: Text("4"),
-              ),
+              Text("Any"),
+              Text("1"),
+              Text("2"),
+              Text("3"),
+              Text("4"),
             ],
             onPressed: (index) {
               setState(
@@ -61,7 +46,7 @@ class _BedSelectionState extends State<BedSelection> {
                   for (int i = 0; i < isSelected.length; i++) {
                     isSelected[i] = i == index;
                     BlocProvider.of<SearchBloc>(context)
-                      ..add(BedroomsChangedEvent(bedrooms: index));
+                      ..add(BedroomsChangedEvent(bedrooms: index.toString()));
                   }
                 },
               );

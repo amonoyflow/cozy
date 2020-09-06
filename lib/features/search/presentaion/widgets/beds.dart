@@ -20,12 +20,12 @@ class Beds extends StatelessWidget {
                     Text(
                       "Bedrooms",
                       style: TextStyle(
-                        fontSize: 16.0,
+                        fontSize: 18.0,
                         fontWeight: FontWeight.w700,
                       ),
                     ),
                     Text(
-                      "${state.bedrooms}",
+                      state.bedrooms == "0" ? "Any" : "${state.bedrooms}",
                       style: TextStyle(
                         fontSize: 14.0,
                       ),

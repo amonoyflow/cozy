@@ -21,7 +21,7 @@ class PriceRangeLoaded extends SearchState {
 }
 
 class BedroomsLoaded extends SearchState {
-  final int bedrooms;
+  final String bedrooms;
 
   BedroomsLoaded({
     this.bedrooms,

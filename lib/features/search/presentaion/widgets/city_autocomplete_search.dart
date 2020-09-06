@@ -28,23 +28,41 @@ class _AutoCompleteSearchState extends State<CityAutoCompleteSearch> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 50.0,
       padding: const EdgeInsets.symmetric(horizontal: 13.0),
       child: autoCompleteTextField = AutoCompleteTextField<Cities>(
         decoration: new InputDecoration(
           prefixIcon: Icon(
-            Icons.search,
-            size: 20.0,
+            Icons.location_pin,
+            size: 18.0,
           ),
           filled: true,
           hintText: 'City',
           fillColor: Colors.white,
-          border: InputBorder.none,
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: Color(0xFF8080C0),
+              width: 2.0,
+            ),
+            borderRadius: const BorderRadius.all(
+              Radius.circular(10.0),
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: Color(0xFF8080C0),
+              width: 2.0,
+            ),
+            borderRadius: const BorderRadius.all(
+              Radius.circular(10.0),
+            ),
+          ),
           hintStyle: TextStyle(
-            color: Colors.black38,
-            height: 1.35,
+            color: Colors.grey,
+            height: 0.9,
           ),
         ),
-        clearOnSubmit: false,
+        clearOnSubmit: true,
         key: key,
         suggestions: CityModels.cities,
         itemBuilder: (context, item) {

@@ -20,12 +20,14 @@ class Price extends StatelessWidget {
                   Text(
                     "Price",
                     style: TextStyle(
-                      fontSize: 16.0,
+                      fontSize: 18.0,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
                   Text(
-                    "₱${state.priceRange.start.toCurrency()} - ₱${state.priceRange.end.toCurrency()}",
+                    state.priceRange == RangeValues(0, 100000)
+                        ? "Any"
+                        : "₱${state.priceRange.start.toCurrency()} - ₱${state.priceRange.end.toCurrency()}",
                     style: TextStyle(
                       fontSize: 14.0,
                     ),
