@@ -21,14 +21,16 @@ class PriceRangeLoaded extends SearchState {
 }
 
 class BedroomsLoaded extends SearchState {
-  final int bedrooms;
+  final String bedrooms;
+  final int index;
 
   BedroomsLoaded({
     this.bedrooms,
+    this.index,
   });
 
   @override
-  List<Object> get props => [bedrooms];
+  List<Object> get props => [bedrooms, index];
 }
 
 class CitySearchLoaded extends SearchState {
@@ -40,4 +42,30 @@ class CitySearchLoaded extends SearchState {
 
   @override
   List<Object> get props => [city];
+}
+
+class PropertyLoaded extends SearchState {
+  final String property;
+  final int index;
+
+  PropertyLoaded({
+    this.property,
+    this.index,
+  });
+
+  @override
+  List<Object> get props => [property, index];
+}
+
+class FurnishingLoaded extends SearchState {
+  final String furnishing;
+  final int index;
+
+  FurnishingLoaded({
+    this.furnishing,
+    this.index,
+  });
+
+  @override
+  List<Object> get props => [furnishing, index];
 }

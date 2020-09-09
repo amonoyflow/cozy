@@ -1,14 +1,14 @@
 import 'package:cozy/features/search/presentaion/bloc/search_bloc.dart';
-import 'package:cozy/features/search/presentaion/widgets/beds_selection.dart';
+import 'package:cozy/features/search/presentaion/widgets/property_selection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class Beds extends StatelessWidget {
+class Property extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SearchBloc, SearchState>(
       builder: (context, state) {
-        if (state is BedroomsLoaded) {
+        if (state is PropertyLoaded) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -18,15 +18,17 @@ class Beds extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Bedrooms",
+                      "Property Type",
                       style: TextStyle(
                         fontSize: 18.0,
                         fontWeight: FontWeight.w700,
                       ),
                     ),
                     Text(
-                      state.bedrooms,
-                      style: TextStyle(fontSize: 14.0),
+                      state.property,
+                      style: TextStyle(
+                        fontSize: 14.0,
+                      ),
                     ),
                   ],
                 ),
@@ -34,8 +36,8 @@ class Beds extends StatelessWidget {
               SizedBox(height: 15.0),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                child: BedSelection(
-                  titles: ["Any", "1", "2", "3", "4"],
+                child: PropertySelection(
+                  titles: ["Any", "Apartment", "Condo", "Townhouse", "Villa"],
                   color: Colors.white,
                   secondaryColor: Color(0xFF8080C0),
                   current: state.index,

@@ -35,7 +35,6 @@ class Price extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 5.0),
             PriceSlider(
               minPrice: 0,
               maxPrice: 100000,

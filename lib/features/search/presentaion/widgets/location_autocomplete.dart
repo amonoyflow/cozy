@@ -4,16 +4,15 @@ import 'package:cozy/features/search/presentaion/bloc/search_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CityAutoCompleteSearch extends StatefulWidget {
+class LocationAutoComplete extends StatefulWidget {
   @override
-  _AutoCompleteSearchState createState() => _AutoCompleteSearchState();
+  _LocationAutoCompleteState createState() => _LocationAutoCompleteState();
 }
 
-class _AutoCompleteSearchState extends State<CityAutoCompleteSearch> {
+class _LocationAutoCompleteState extends State<LocationAutoComplete> {
   GlobalKey<AutoCompleteTextFieldState<Cities>> key = new GlobalKey();
   AutoCompleteTextField autoCompleteTextField;
   TextEditingController controller = TextEditingController();
-  _AutoCompleteSearchState();
 
   void _loadData() async {
     await CityModels.loadCities();
@@ -86,7 +85,7 @@ class _AutoCompleteSearchState extends State<CityAutoCompleteSearch> {
           setState(() => autoCompleteTextField.textField.controller.text =
               item.autocompleteterm);
           BlocProvider.of<SearchBloc>(context)
-            ..add(CitySearchChangedEvent(city: item.autocompleteterm));
+            ..add(LocationSearchChangedEvent(location: item.autocompleteterm));
         },
         itemSorter: (a, b) {
           return a.autocompleteterm.compareTo(b.autocompleteterm);
@@ -98,7 +97,7 @@ class _AutoCompleteSearchState extends State<CityAutoCompleteSearch> {
         },
         textChanged: (item) {
           BlocProvider.of<SearchBloc>(context)
-            ..add(CitySearchChangedEvent(city: item));
+            ..add(LocationSearchChangedEvent(location: item));
         },
       ),
     );

@@ -19,23 +19,51 @@ class PriceRangeChangedEvent extends SearchEvent {
 }
 
 class BedroomsChangedEvent extends SearchEvent {
-  final int bedrooms;
+  final String bedrooms;
+  final int index;
 
   BedroomsChangedEvent({
     this.bedrooms,
+    this.index,
   });
 
   @override
-  List<Object> get props => [bedrooms];
+  List<Object> get props => [bedrooms, index];
 }
 
-class CitySearchChangedEvent extends SearchEvent {
-  final String city;
+class LocationSearchChangedEvent extends SearchEvent {
+  final String location;
 
-  CitySearchChangedEvent({
-    this.city,
+  LocationSearchChangedEvent({
+    this.location,
   });
 
   @override
-  List<Object> get props => [city];
+  List<Object> get props => [location];
+}
+
+class PropertyChangedEvent extends SearchEvent {
+  final String property;
+  final int index;
+
+  PropertyChangedEvent({
+    this.property,
+    this.index,
+  });
+
+  @override
+  List<Object> get props => [property, index];
+}
+
+class FurnishingChangedEvent extends SearchEvent {
+  final String furnishing;
+  final int index;
+
+  FurnishingChangedEvent({
+    this.furnishing,
+    this.index,
+  });
+
+  @override
+  List<Object> get props => [furnishing, index];
 }

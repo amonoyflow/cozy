@@ -1,9 +1,9 @@
 import 'package:cozy/features/search/presentaion/bloc/search_bloc.dart';
-import 'package:cozy/features/search/presentaion/widgets/city_autocomplete_search.dart';
+import 'package:cozy/features/search/presentaion/widgets/location_autocomplete.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class City extends StatelessWidget {
+class Location extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SearchBloc, SearchState>(builder: (context, state) {
@@ -33,7 +33,7 @@ class City extends StatelessWidget {
               ),
             ),
             SizedBox(height: 15.0),
-            CityAutoCompleteSearch(),
+            LocationAutoComplete(),
           ],
         );
       }
