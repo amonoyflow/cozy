@@ -1,5 +1,5 @@
-import 'package:cozy/features/search/presentaion/bloc/search_bloc.dart';
-import 'package:cozy/features/search/presentaion/widgets/price_slider.dart';
+import 'package:cozy/features/search/presentation/bloc/search_bloc.dart';
+import 'package:cozy/features/search/presentation/widgets/price_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:cozy/core/extensions/number_parsing.dart';

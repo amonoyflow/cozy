@@ -1,10 +1,10 @@
 import 'package:cozy/core/locator.dart';
-import 'package:cozy/features/search/presentaion/bloc/search_bloc.dart';
-import 'package:cozy/features/search/presentaion/widgets/beds.dart';
-import 'package:cozy/features/search/presentaion/widgets/furnishing.dart';
-import 'package:cozy/features/search/presentaion/widgets/location.dart';
-import 'package:cozy/features/search/presentaion/widgets/price.dart';
-import 'package:cozy/features/search/presentaion/widgets/property.dart';
+import 'package:cozy/features/search/presentation/bloc/search_bloc.dart';
+import 'package:cozy/features/search/presentation/widgets/beds.dart';
+import 'package:cozy/features/search/presentation/widgets/furnishing.dart';
+import 'package:cozy/features/search/presentation/widgets/location.dart';
+import 'package:cozy/features/search/presentation/widgets/price.dart';
+import 'package:cozy/features/search/presentation/widgets/property.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

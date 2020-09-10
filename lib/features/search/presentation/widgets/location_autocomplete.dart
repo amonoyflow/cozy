@@ -1,6 +1,6 @@
 import 'package:autocomplete_textfield/autocomplete_textfield.dart';
 import 'package:cozy/features/search/domain/entities/cities.dart';
-import 'package:cozy/features/search/presentaion/bloc/search_bloc.dart';
+import 'package:cozy/features/search/presentation/bloc/search_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -32,7 +32,7 @@ class _LocationAutoCompleteState extends State<LocationAutoComplete> {
       child: autoCompleteTextField = AutoCompleteTextField<Cities>(
         decoration: new InputDecoration(
           prefixIcon: Icon(
-            Icons.location_pin,
+            Icons.location_city,
             size: 18.0,
           ),
           filled: true,

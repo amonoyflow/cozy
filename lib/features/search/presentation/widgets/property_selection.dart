@@ -1,14 +1,14 @@
-import 'package:cozy/features/search/presentaion/bloc/search_bloc.dart';
+import 'package:cozy/features/search/presentation/bloc/search_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class FurnishingSelection extends StatefulWidget {
+class PropertySelection extends StatefulWidget {
   final int current;
   final List<String> titles;
   final Color color;
   final Color secondaryColor;
 
-  const FurnishingSelection({
+  const PropertySelection({
     this.titles,
     this.current,
     this.color,
@@ -16,10 +16,10 @@ class FurnishingSelection extends StatefulWidget {
   });
 
   @override
-  _FurnishingSelectionState createState() => _FurnishingSelectionState();
+  _PropertySelectionState createState() => _PropertySelectionState();
 }
 
-class _FurnishingSelectionState extends State<FurnishingSelection> {
+class _PropertySelectionState extends State<PropertySelection> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -70,7 +70,7 @@ class _FurnishingSelectionState extends State<FurnishingSelection> {
     return InkWell(
       onTap: () {
         BlocProvider.of<SearchBloc>(context)
-          ..add(FurnishingChangedEvent(furnishing: title, index: index));
+          ..add(PropertyChangedEvent(property: title, index: index));
       },
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 5.0),

@@ -1,5 +1,5 @@
 import 'package:cozy/features/home/presentation/screens/home.dart';
-import 'package:cozy/features/search/presentaion/screens/search.dart';
+import 'package:cozy/features/search/presentation/screens/search.dart';
 import 'package:flutter/material.dart';
 
 class Navigation extends StatefulWidget {
@@ -28,7 +28,7 @@ class _NavigationState extends State<Navigation> with TickerProviderStateMixin {
               for (final item in NavigationItem.items)
                 BottomNavigationBarItem(
                   icon: item.icon,
-                  label: item.label,
+                  title: Text(item.label),
                 )
             ],
           ),
