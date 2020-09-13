@@ -1,6 +1,6 @@
-# cozy
+# Cozy Rentals App
 
-A new Flutter project.
+An app that displays avaialble apartment for rent.
 
 ## Getting Started
 
