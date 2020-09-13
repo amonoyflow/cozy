@@ -1,12 +1,12 @@
-import 'package:cozy/features/search/presentation/bloc/search_bloc.dart';
+import 'package:cozy/features/search/presentation/bloc/property/property_bloc.dart';
 import 'package:cozy/features/search/presentation/widgets/property_selection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class Property extends StatelessWidget {
+class PropertyType extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SearchBloc, SearchState>(
+    return BlocBuilder<PropertyBloc, PropertyState>(
       builder: (context, state) {
         if (state is PropertyLoaded) {
           return Column(

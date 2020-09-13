@@ -12,7 +12,7 @@ class PropertiesRemoteImpl extends ServiceBase implements PropertiesRemote {
   @override
   Future<List<PropertyModel>> getAllProperties() async {
     final response = await http.get(
-        "https://run.mocky.io/v3/9f893fe7-af83-4a46-9e82-39bb6924af4c",
+        "https://run.mocky.io/v3/efdf7d2a-ba0d-4d53-80da-9f96e9661509",
         headers: {"Content-Type": "application/json"});
 
     if (response.statusCode == HttpStatus.ok) {

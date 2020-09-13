@@ -1,42 +1,46 @@
 import 'package:autocomplete_textfield/autocomplete_textfield.dart';
-import 'package:cozy/features/search/domain/entities/cities.dart';
+import 'package:cozy/features/search/domain/entities/city.dart';
+import 'package:cozy/features/search/presentation/bloc/bedroom/bedroom_bloc.dart';
+import 'package:cozy/features/search/presentation/bloc/furnishing/furnishing_bloc.dart';
+import 'package:cozy/features/search/presentation/bloc/location/location_bloc.dart';
+import 'package:cozy/features/search/presentation/bloc/price/price_bloc.dart';
+import 'package:cozy/features/search/presentation/bloc/property/property_bloc.dart';
 import 'package:cozy/features/search/presentation/bloc/search_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LocationAutoComplete extends StatefulWidget {
+  final List<City> cities;
+
+  LocationAutoComplete({this.cities});
+
   @override
   _LocationAutoCompleteState createState() => _LocationAutoCompleteState();
 }
 
 class _LocationAutoCompleteState extends State<LocationAutoComplete> {
-  GlobalKey<AutoCompleteTextFieldState<Cities>> key = new GlobalKey();
+  GlobalKey<AutoCompleteTextFieldState<City>> key = new GlobalKey();
   AutoCompleteTextField autoCompleteTextField;
   TextEditingController controller = TextEditingController();
 
-  void _loadData() async {
-    await CityModels.loadCities();
-  }
-
-  @override
-  void initState() {
-    _loadData();
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
+    var propertyBloc = BlocProvider.of<PropertyBloc>(context);
+    var furnishingBloc = BlocProvider.of<FurnishingBloc>(context);
+    var priceBloc = BlocProvider.of<PriceBloc>(context);
+    var bedroomBloc = BlocProvider.of<BedroomBloc>(context);
+
     return Container(
       height: 50.0,
       padding: const EdgeInsets.symmetric(horizontal: 13.0),
-      child: autoCompleteTextField = AutoCompleteTextField<Cities>(
+      child: autoCompleteTextField = AutoCompleteTextField<City>(
         decoration: new InputDecoration(
           prefixIcon: Icon(
             Icons.location_city,
             size: 18.0,
           ),
           filled: true,
-          hintText: 'City',
+          hintText: 'Location',
           fillColor: Colors.white,
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
@@ -63,15 +67,15 @@ class _LocationAutoCompleteState extends State<LocationAutoComplete> {
         ),
         clearOnSubmit: true,
         key: key,
-        suggestions: CityModels.cities,
+        suggestions: widget.cities,
         itemBuilder: (context, item) {
           return Padding(
             padding: const EdgeInsets.all(16.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
+              children: [
                 Text(
-                  item.autocompleteterm,
+                  item.keyword,
                   style: TextStyle(fontSize: 16.0),
                 ),
                 Text(
@@ -82,22 +86,36 @@ class _LocationAutoCompleteState extends State<LocationAutoComplete> {
           );
         },
         itemSubmitted: (item) {
-          setState(() => autoCompleteTextField.textField.controller.text =
-              item.autocompleteterm);
+          setState(() =>
+              autoCompleteTextField.textField.controller.text = item.keyword);
+          BlocProvider.of<LocationBloc>(context)
+            ..add(LocationSearchChangedEvent(location: item.keyword));
           BlocProvider.of<SearchBloc>(context)
-            ..add(LocationSearchChangedEvent(location: item.autocompleteterm));
+            ..add(SearchTappedEvent(
+              location: item.keyword,
+              bedroom: bedroomBloc.bedroom,
+              property: propertyBloc.property,
+              furnishing: furnishingBloc.furnishing,
+              price: priceBloc.price,
+            ));
         },
         itemSorter: (a, b) {
-          return a.autocompleteterm.compareTo(b.autocompleteterm);
+          return a.autocompleteterm.compareTo(b.keyword);
         },
         itemFilter: (item, query) {
-          return item.autocompleteterm
-              .toLowerCase()
-              .startsWith(query.toLowerCase());
+          return item.keyword.toLowerCase().startsWith(query.toLowerCase());
         },
         textChanged: (item) {
-          BlocProvider.of<SearchBloc>(context)
+          BlocProvider.of<LocationBloc>(context)
             ..add(LocationSearchChangedEvent(location: item));
+          BlocProvider.of<SearchBloc>(context)
+            ..add(SearchTappedEvent(
+              location: item,
+              bedroom: bedroomBloc.bedroom,
+              property: propertyBloc.property,
+              furnishing: furnishingBloc.furnishing,
+              price: priceBloc.price,
+            ));
         },
       ),
     );

@@ -1,10 +1,17 @@
 import 'package:cozy/core/locator.dart';
+import 'package:cozy/features/search/presentation/bloc/bedroom/bedroom_bloc.dart';
+import 'package:cozy/features/search/presentation/bloc/furnishing/furnishing_bloc.dart';
+import 'package:cozy/features/search/presentation/bloc/location/location_bloc.dart';
+import 'package:cozy/features/search/presentation/bloc/price/price_bloc.dart';
+import 'package:cozy/features/search/presentation/bloc/property/property_bloc.dart';
 import 'package:cozy/features/search/presentation/bloc/search_bloc.dart';
 import 'package:cozy/features/search/presentation/widgets/beds.dart';
 import 'package:cozy/features/search/presentation/widgets/furnishing.dart';
 import 'package:cozy/features/search/presentation/widgets/location.dart';
 import 'package:cozy/features/search/presentation/widgets/price.dart';
-import 'package:cozy/features/search/presentation/widgets/property.dart';
+import 'package:cozy/features/search/presentation/widgets/property_type.dart';
+import 'package:cozy/features/search/presentation/widgets/search_button.dart';
+import 'package:cozy/features/search/presentation/widgets/search_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,74 +21,53 @@ class Search extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: 15.0,
-            horizontal: 10.0,
-          ),
-          child: Column(
-            children: [
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                child: Text(
-                  "What are you looking for?",
-                  style: TextStyle(
-                    fontSize: 46.0,
-                    fontWeight: FontWeight.w900,
-                  ),
-                ),
-              ),
-              SizedBox(height: 25.0),
-              BlocProvider(
-                create: (_) => locator<SearchBloc>()
-                  ..add(LocationSearchChangedEvent(location: "Any")),
-                child: Location(),
-              ),
-              SizedBox(height: 20.0),
-              BlocProvider(
-                create: (_) => locator<SearchBloc>()
+        child: MultiBlocProvider(
+          providers: [
+            BlocProvider(
+                create: (_) => locator<LocationBloc>()
+                  ..add(LocationSearchChangedEvent(location: "Any"))),
+            BlocProvider(
+                create: (_) => locator<PriceBloc>()
                   ..add(PriceRangeChangedEvent(
-                      priceRange: RangeValues(0, 100000))),
-                child: Price(),
-              ),
-              SizedBox(height: 10.0),
-              BlocProvider(
-                create: (_) => locator<SearchBloc>()
-                  ..add(BedroomsChangedEvent(bedrooms: "Any", index: 0)),
-                child: Beds(),
-              ),
-              SizedBox(height: 25.0),
-              BlocProvider(
-                create: (_) => locator<SearchBloc>()
-                  ..add(PropertyChangedEvent(property: "Any", index: 0)),
-                child: Property(),
-              ),
-              SizedBox(height: 25.0),
-              BlocProvider(
-                create: (_) => locator<SearchBloc>()
-                  ..add(FurnishingChangedEvent(furnishing: "Any", index: 0)),
-                child: Furnishing(),
-              ),
-              SizedBox(height: 25.0),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                child: RaisedButton(
-                  onPressed: () {},
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0)),
-                  color: Color(0xFF8080C0),
-                  textColor: Colors.white,
-                  child: SizedBox(
-                    height: 50.0,
-                    child: Center(
-                      child: Text("Search"),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+                      priceRange: RangeValues(0, 100000)))),
+            BlocProvider(
+                create: (_) => locator<BedroomBloc>()
+                  ..add(BedroomsChangedEvent(bedrooms: "Any", index: 0))),
+            BlocProvider(
+                create: (_) => locator<PropertyBloc>()
+                  ..add(PropertyChangedEvent(property: "Any", index: 0))),
+            BlocProvider(
+                create: (_) => locator<FurnishingBloc>()
+                  ..add(FurnishingChangedEvent(furnishing: "Any", index: 0))),
+            BlocProvider(
+                create: (_) =>
+                    locator<SearchBloc>()..add(SearchTappedEvent(bedroom: 0))),
+          ],
+          child: searchForm(),
         ),
+      ),
+    );
+  }
+
+  Widget searchForm() {
+    return Padding(
+      padding: const EdgeInsets.only(top: 15.0, left: 5.0, right: 5.0),
+      child: Column(
+        children: [
+          SearchHeader(),
+          SizedBox(height: 25.0),
+          Location(),
+          SizedBox(height: 25.0),
+          Price(),
+          SizedBox(height: 10.0),
+          Beds(),
+          SizedBox(height: 25.0),
+          PropertyType(),
+          SizedBox(height: 25.0),
+          Furnishing(),
+          SizedBox(height: 25.0),
+          SearchButton(),
+        ],
       ),
     );
   }

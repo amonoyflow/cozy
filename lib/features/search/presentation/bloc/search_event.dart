@@ -7,63 +7,21 @@ abstract class SearchEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class PriceRangeChangedEvent extends SearchEvent {
-  final RangeValues priceRange;
-
-  PriceRangeChangedEvent({
-    this.priceRange,
-  });
-
-  @override
-  List<Object> get props => [priceRange];
-}
-
-class BedroomsChangedEvent extends SearchEvent {
-  final String bedrooms;
-  final int index;
-
-  BedroomsChangedEvent({
-    this.bedrooms,
-    this.index,
-  });
-
-  @override
-  List<Object> get props => [bedrooms, index];
-}
-
-class LocationSearchChangedEvent extends SearchEvent {
+class SearchTappedEvent extends SearchEvent {
+  final int bedroom;
+  final int property;
+  final int furnishing;
+  final RangeValues price;
   final String location;
 
-  LocationSearchChangedEvent({
+  SearchTappedEvent({
+    this.bedroom,
+    this.property,
+    this.furnishing,
+    this.price,
     this.location,
   });
 
   @override
-  List<Object> get props => [location];
-}
-
-class PropertyChangedEvent extends SearchEvent {
-  final String property;
-  final int index;
-
-  PropertyChangedEvent({
-    this.property,
-    this.index,
-  });
-
-  @override
-  List<Object> get props => [property, index];
-}
-
-class FurnishingChangedEvent extends SearchEvent {
-  final String furnishing;
-  final int index;
-
-  FurnishingChangedEvent({
-    this.furnishing,
-    this.index,
-  });
-
-  @override
-  List<Object> get props => [furnishing, index];
+  List<Object> get props => [bedroom, property, furnishing, price, location];
 }

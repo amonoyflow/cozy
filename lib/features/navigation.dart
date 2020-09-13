@@ -56,10 +56,5 @@ class NavigationItem {
       icon: Icon(Icons.search),
       label: "Search",
     ),
-    NavigationItem(
-      screen: Center(child: Text("Profile")),
-      icon: Icon(Icons.person),
-      label: "Profile",
-    ),
   ];
 }

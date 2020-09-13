@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class Property extends Equatable {
+class SearchResult extends Equatable {
   final String location;
   final String city;
   final int price;
@@ -11,7 +11,7 @@ class Property extends Equatable {
   final int propertyType;
   final int furnishing;
 
-  const Property({
+  const SearchResult({
     this.location,
     this.city,
     this.price,

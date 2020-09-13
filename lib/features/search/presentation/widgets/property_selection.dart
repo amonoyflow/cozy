@@ -1,3 +1,8 @@
+import 'package:cozy/features/search/presentation/bloc/bedroom/bedroom_bloc.dart';
+import 'package:cozy/features/search/presentation/bloc/furnishing/furnishing_bloc.dart';
+import 'package:cozy/features/search/presentation/bloc/location/location_bloc.dart';
+import 'package:cozy/features/search/presentation/bloc/price/price_bloc.dart';
+import 'package:cozy/features/search/presentation/bloc/property/property_bloc.dart';
 import 'package:cozy/features/search/presentation/bloc/search_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -67,10 +72,26 @@ class _PropertySelectionState extends State<PropertySelection> {
   }
 
   Widget _inActiveButton(String title, int index) {
+    var bedroomBloc = BlocProvider.of<BedroomBloc>(context);
+    var furnishingBloc = BlocProvider.of<FurnishingBloc>(context);
+    var priceBloc = BlocProvider.of<PriceBloc>(context);
+    var locationBloc = BlocProvider.of<LocationBloc>(context);
+
     return InkWell(
       onTap: () {
+        BlocProvider.of<PropertyBloc>(context)
+          ..add(PropertyChangedEvent(
+            property: title,
+            index: index,
+          ));
         BlocProvider.of<SearchBloc>(context)
-          ..add(PropertyChangedEvent(property: title, index: index));
+          ..add(SearchTappedEvent(
+            property: index,
+            bedroom: bedroomBloc.bedroom,
+            furnishing: furnishingBloc.furnishing,
+            price: priceBloc.price,
+            location: locationBloc.location,
+          ));
       },
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 5.0),

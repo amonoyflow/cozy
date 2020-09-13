@@ -1,10 +1,10 @@
-import 'package:bloc/bloc.dart';
+import 'package:cozy/features/home/domain/usecase/get_properties.dart';
+import 'package:cozy/features/home/domain/entities/property.dart';
 import 'package:cozy/core/errors/failures.dart';
 import 'package:cozy/core/usecases/usecase.dart';
-import 'package:cozy/features/home/domain/entities/property.dart';
-import 'package:cozy/features/home/domain/usecase/get_properties.dart';
-import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
+import 'package:dartz/dartz.dart';
+import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
 part 'home_event.dart';
@@ -13,8 +13,9 @@ part 'home_state.dart';
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final GetProperties getProperties;
 
-  HomeBloc({@required GetProperties properties})
-      : assert(properties != null),
+  HomeBloc({
+    @required GetProperties properties,
+  })  : assert(properties != null),
         getProperties = properties,
         super(HomeInitial());
 

@@ -1,4 +1,4 @@
-import 'package:cozy/features/search/presentation/bloc/search_bloc.dart';
+import 'package:cozy/features/search/presentation/bloc/bedroom/bedroom_bloc.dart';
 import 'package:cozy/features/search/presentation/widgets/beds_selection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,9 +6,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class Beds extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SearchBloc, SearchState>(
+    return BlocBuilder<BedroomBloc, BedroomState>(
       builder: (context, state) {
-        if (state is BedroomsLoaded) {
+        if (state is BedroomLoaded) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [

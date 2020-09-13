@@ -1,3 +1,8 @@
+import 'package:cozy/features/search/presentation/bloc/bedroom/bedroom_bloc.dart';
+import 'package:cozy/features/search/presentation/bloc/furnishing/furnishing_bloc.dart';
+import 'package:cozy/features/search/presentation/bloc/location/location_bloc.dart';
+import 'package:cozy/features/search/presentation/bloc/price/price_bloc.dart';
+import 'package:cozy/features/search/presentation/bloc/property/property_bloc.dart';
 import 'package:cozy/features/search/presentation/bloc/search_bloc.dart';
 import 'package:cozy/features/search/presentation/widgets/price_range_slider_thumb.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +30,11 @@ class _PriceSliderState extends State<PriceSlider> {
 
   @override
   Widget build(BuildContext context) {
+    var bedroomBloc = BlocProvider.of<BedroomBloc>(context);
+    var furnishingBloc = BlocProvider.of<FurnishingBloc>(context);
+    var propertyBloc = BlocProvider.of<PropertyBloc>(context);
+    var locationBloc = BlocProvider.of<LocationBloc>(context);
+
     return SliderTheme(
       data: SliderThemeData(
         trackHeight: 2.0,
@@ -46,11 +56,21 @@ class _PriceSliderState extends State<PriceSlider> {
           "${priceValues.end.toCurrency()}",
         ),
         onChanged: (values) {
-          setState(() {
-            priceValues = values;
-            BlocProvider.of<SearchBloc>(context)
-              ..add(PriceRangeChangedEvent(priceRange: values));
-          });
+          setState(
+            () {
+              priceValues = values;
+              BlocProvider.of<PriceBloc>(context)
+                ..add(PriceRangeChangedEvent(priceRange: values));
+              BlocProvider.of<SearchBloc>(context)
+                ..add(SearchTappedEvent(
+                  price: values,
+                  property: propertyBloc.property,
+                  bedroom: bedroomBloc.bedroom,
+                  furnishing: furnishingBloc.furnishing,
+                  location: locationBloc.location,
+                ));
+            },
+          );
         },
       ),
     );

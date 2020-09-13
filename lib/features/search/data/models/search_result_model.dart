@@ -1,7 +1,7 @@
-import 'package:cozy/features/home/domain/entities/property.dart';
+import 'package:cozy/features/search/domain/entities/search_result.dart';
 
-class PropertyModel extends Property {
-  const PropertyModel({
+class SearchResultModel extends SearchResult {
+  const SearchResultModel({
     String location,
     String city,
     int price,
@@ -22,8 +22,8 @@ class PropertyModel extends Property {
             propertyType: propertyType,
             furnishing: furnishing);
 
-  factory PropertyModel.fromJson(Map<String, dynamic> json) {
-    return PropertyModel(
+  factory SearchResultModel.fromJson(Map<String, dynamic> json) {
+    return SearchResultModel(
       location: json["location"],
       city: json["city"],
       price: json["price"],

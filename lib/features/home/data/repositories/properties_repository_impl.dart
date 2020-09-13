@@ -1,8 +1,8 @@
-import 'package:cozy/core/errors/exceptions.dart';
-import 'package:cozy/core/errors/failures.dart';
+import 'package:cozy/features/home/domain/repositories/properties_repository.dart';
 import 'package:cozy/features/home/data/datasources/properties_remote.dart';
 import 'package:cozy/features/home/domain/entities/property.dart';
-import 'package:cozy/features/home/domain/repositories/properties_repository.dart';
+import 'package:cozy/core/errors/exceptions.dart';
+import 'package:cozy/core/errors/failures.dart';
 import 'package:dartz/dartz.dart';
 import 'package:meta/meta.dart';
 
