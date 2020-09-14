@@ -11,11 +11,15 @@ class SearchError extends SearchState {}
 
 class SearchLoaded extends SearchState {
   final int count;
+  final List<SearchResult> result;
+  final int resultCount;
 
   SearchLoaded({
     @required this.count,
+    @required this.result,
+    @required this.resultCount,
   });
 
   @override
-  List<Object> get props => [count];
+  List<Object> get props => [count, result, resultCount];
 }

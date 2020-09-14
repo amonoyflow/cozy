@@ -61,12 +61,16 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         var pp = price == RangeValues(0, 100000) || price == null
             ? f
             : f.where((x) => x.price >= price.start && x.price <= price.end);
-        var l = location == "" || location == null
+        var l = location == "" || location == null || location == "Any"
             ? pp
             : pp.where(
                 (x) => x.city.toLowerCase().contains(location.toLowerCase()));
 
-        return SearchLoaded(count: l.length);
+        return SearchLoaded(
+          count: l.length,
+          result: l.toList(),
+          resultCount: l.length,
+        );
       },
     );
   }
