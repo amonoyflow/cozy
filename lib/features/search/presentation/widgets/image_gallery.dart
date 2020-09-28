@@ -32,36 +32,35 @@ class _MyImageGallery extends State<ImageGallery> {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.all(
-        Radius.circular(30.0),
-      ),
-      child: Container(
-        height: MediaQuery.of(context).size.height / 2.1,
-        child: Swiper(
-          loop: true,
-          itemCount: imgList.length,
-          controller: controller,
-          pagination: SwiperPagination(
-            margin: const EdgeInsets.all(5.0),
-            builder: DotSwiperPaginationBuilder(
-              activeColor: Color(0xff38547C),
-              size: 8.0,
-              activeSize: 10.0,
-            ),
-          ),
-          itemBuilder: (context, index) {
-            return Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(imgList[index]),
-                  fit: BoxFit.cover,
-                ),
+    return Column(
+      children: [
+        Container(
+          height: MediaQuery.of(context).size.height / 2.1,
+          child: Swiper(
+            loop: true,
+            itemCount: imgList.length,
+            controller: controller,
+            pagination: SwiperPagination(
+              margin: const EdgeInsets.only(bottom: 45.0),
+              builder: DotSwiperPaginationBuilder(
+                activeColor: Color(0xff38547C),
+                size: 8.0,
+                activeSize: 10.0,
               ),
-            );
-          },
+            ),
+            itemBuilder: (context, index) {
+              return Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: NetworkImage(imgList[index]),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              );
+            },
+          ),
         ),
-      ),
+      ],
     );
   }
 }
