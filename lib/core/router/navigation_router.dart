@@ -5,7 +5,7 @@ import 'package:cozy/features/search/presentation/screens/result.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Router {
+class NavigationRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case "/":

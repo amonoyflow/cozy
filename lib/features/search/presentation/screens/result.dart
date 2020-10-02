@@ -1,4 +1,4 @@
-import 'package:cozy/core/router/routes.dart';
+import 'package:cozy/core/router/navigation_routes.dart';
 import 'package:cozy/features/search/domain/entities/search_result.dart';
 import 'package:cozy/features/search/presentation/widgets/property_info.dart';
 import 'package:flutter/material.dart';

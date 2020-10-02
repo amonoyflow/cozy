@@ -1,5 +1,5 @@
-import 'package:cozy/core/router/router.dart';
-import 'package:cozy/core/router/routes.dart';
+import 'package:cozy/core/router/navigation_router.dart';
+import 'package:cozy/core/router/navigation_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:cozy/core/locator.dart';
 
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Cozy Rent',
       debugShowCheckedModeBanner: false,
-      onGenerateRoute: Router.generateRoute,
+      onGenerateRoute: NavigationRouter.generateRoute,
       initialRoute: homeRoute,
     );
   }
