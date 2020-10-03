@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
-class ImageGallery extends StatefulWidget {
+class PropertyGallery extends StatefulWidget {
   @override
-  _MyImageGallery createState() => _MyImageGallery();
+  _PropertyGallery createState() => _PropertyGallery();
 }
 
-class _MyImageGallery extends State<ImageGallery> {
+class _PropertyGallery extends State<PropertyGallery> {
   var imgList = [
     "https://88designbox.com/upload/2016/10/10/small-one-bedroom-apartment-02.jpg",
     "https://q-xx.bstatic.com/xdata/images/hotel/840x460/141805669.jpg?k=588709820e526d66e30deab1bfe51741f48cb6becff5413c89cac726ad9bf6f0&o=",
@@ -23,10 +23,10 @@ class _MyImageGallery extends State<ImageGallery> {
     controller = new SwiperController();
     autoplayes = new List()
       ..length = imgList.length
-      ..fillRange(0, 3, false);
+      ..fillRange(0, imgList.length, false);
     controllers = new List()
       ..length = imgList.length
-      ..fillRange(0, 3, new SwiperController());
+      ..fillRange(0, imgList.length, new SwiperController());
     super.initState();
   }
 

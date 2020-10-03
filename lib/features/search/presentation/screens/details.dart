@@ -1,6 +1,6 @@
 import 'package:cozy/features/search/domain/entities/search_result.dart';
-import 'package:cozy/features/search/presentation/widgets/contact.dart';
-import 'package:cozy/features/search/presentation/widgets/image_gallery.dart';
+import 'package:cozy/features/search/presentation/widgets/property_details.dart';
+import 'package:cozy/features/search/presentation/widgets/property_gallery.dart';
 import 'package:flutter/material.dart';
 
 class Details extends StatelessWidget {
@@ -16,7 +16,7 @@ class Details extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Stack(
         children: [
-          ImageGallery(),
+          PropertyGallery(),
           Positioned(
             top: 45.0,
             left: 14.0,
@@ -55,7 +55,7 @@ class Details extends StatelessWidget {
           ),
           Positioned(
             top: MediaQuery.of(context).size.height / 2.2,
-            child: Contact(),
+            child: PropertyDetails(searchResult: searchResult),
           ),
         ],
       ),

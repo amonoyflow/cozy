@@ -1,7 +1,14 @@
+import 'package:cozy/features/search/domain/entities/search_result.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class Contact extends StatelessWidget {
+class PropertyDetails extends StatelessWidget {
+  final SearchResult searchResult;
+
+  PropertyDetails({
+    this.searchResult,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -110,7 +117,7 @@ class Contact extends StatelessWidget {
                     child: Column(
                       children: [
                         Text(
-                          "3",
+                          "${searchResult.beds}",
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             fontSize: 20.0,
@@ -144,7 +151,7 @@ class Contact extends StatelessWidget {
                     child: Column(
                       children: [
                         Text(
-                          "1",
+                          "${searchResult.bathrooms}",
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             fontSize: 20.0,
@@ -178,7 +185,7 @@ class Contact extends StatelessWidget {
                     child: Column(
                       children: [
                         Text(
-                          "75",
+                          "${searchResult.floorArea}",
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             fontSize: 20.0,
@@ -208,7 +215,7 @@ class Contact extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "From Owner",
+                        "Features",
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           fontSize: 16.0,
@@ -237,7 +244,7 @@ class Contact extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Features",
+                        "From Owner",
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           fontSize: 16.0,
