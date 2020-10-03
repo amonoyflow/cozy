@@ -54,7 +54,7 @@ class Details extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: MediaQuery.of(context).size.height / 2.3,
+            top: MediaQuery.of(context).size.height / 2.2,
             child: Contact(),
           ),
         ],

@@ -35,7 +35,7 @@ class _MyImageGallery extends State<ImageGallery> {
     return Column(
       children: [
         Container(
-          height: MediaQuery.of(context).size.height / 2.1,
+          height: MediaQuery.of(context).size.height / 2,
           child: Swiper(
             loop: true,
             itemCount: imgList.length,
