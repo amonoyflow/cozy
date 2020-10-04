@@ -212,7 +212,7 @@ class PropertyDetails extends StatelessWidget {
               children: [
                 Expanded(
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Text(
                         "Features",
@@ -223,13 +223,112 @@ class PropertyDetails extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 6.0),
-                      Text(
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                        style: TextStyle(
-                          fontSize: 12.0,
-                          color: Colors.black54,
-                          height: 1.5,
-                        ),
+                      Wrap(
+                        alignment: WrapAlignment.spaceBetween,
+                        direction: Axis.horizontal,
+                        spacing: 10.0,
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(8.0),
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8.0)),
+                              border: Border.all(
+                                width: 1.0,
+                                color: Colors.black12,
+                              ),
+                            ),
+                            child: Column(
+                              children: [
+                                Icon(Icons.home_outlined),
+                                SizedBox(height: 3.0),
+                                Text(
+                                  "Floor Area",
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                    color: Colors.black54,
+                                    fontSize: 10.0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            padding: const EdgeInsets.all(8.0),
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8.0)),
+                              border: Border.all(
+                                width: 1.0,
+                                color: Colors.black12,
+                              ),
+                            ),
+                            child: Column(
+                              children: [
+                                Icon(Icons.account_balance_outlined),
+                                SizedBox(height: 3.0),
+                                Text(
+                                  "Floor Area",
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                    color: Colors.black54,
+                                    fontSize: 10.0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            padding: const EdgeInsets.all(8.0),
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8.0)),
+                              border: Border.all(
+                                width: 1.0,
+                                color: Colors.black12,
+                              ),
+                            ),
+                            child: Column(
+                              children: [
+                                Icon(Icons.account_tree_outlined),
+                                SizedBox(height: 3.0),
+                                Text(
+                                  "Floor Area",
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                    color: Colors.black54,
+                                    fontSize: 10.0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            padding: const EdgeInsets.all(8.0),
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8.0)),
+                              border: Border.all(
+                                width: 1.0,
+                                color: Colors.black12,
+                              ),
+                            ),
+                            child: Column(
+                              children: [
+                                Icon(Icons.account_tree_outlined),
+                                SizedBox(height: 3.0),
+                                Text(
+                                  "Floor Area",
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                    color: Colors.black54,
+                                    fontSize: 10.0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
