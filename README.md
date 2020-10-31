@@ -14,5 +14,9 @@ An app that displays avaialble apartment for rent.
             <p style="text-align:center;">Search screen</p>
             <img width="250px" height="460px" src="https://github.com/amonoyflow/cozy/blob/master/assets/markdown/cozy_search.jpg">
         </td>
+        <td>
+            <p style="text-align:center;">Search screen</p>
+            <img width="250px" height="460px" src="https://github.com/amonoyflow/cozy/blob/master/assets/markdown/cozy_details.jpg">
+        </td>
     </tr>
 </table>
