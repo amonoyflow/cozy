@@ -28,7 +28,7 @@ class _NavigationState extends State<Navigation> with TickerProviderStateMixin {
               for (final item in NavigationItem.items)
                 BottomNavigationBarItem(
                   icon: item.icon,
-                  title: Text(item.label),
+                  label: item.label,
                 )
             ],
           ),
